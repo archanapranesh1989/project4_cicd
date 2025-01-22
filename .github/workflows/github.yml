@@ -26,27 +26,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # - name: Set up Node.js 
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: latest
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3  # Updated to v3
+        with:
+          node-version: 'latest'  # Specify the Node.js version you want to use
 
-      # - name: Print a message for main branch
-      #   if: github.ref == 'refs/heads/main'
-      #   run: echo "This is the main branch."
-
-      # - name: Print a message for non-main branches
-      #   if: github.ref != 'refs/heads/main'
-      #   run: echo "This is not the main branch."
+      - name: Install dependencies
+        run: |
+          cd frontend  # Navigate to the frontend directory
+          npm install  # Install dependencies
 
       - name: Run lint
         run: |
               cd frontend
               npm run lint
 
-      # - name: Debug message
-      #   if: env.DEBUG == 'true'
-      #   run: echo "Debugging is enabled."
+    
 
   test:
     runs-on: ubuntu-latest
