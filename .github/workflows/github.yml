@@ -1,8 +1,12 @@
 # Workflow name
-name: parallel-job-example
+name: frontend pipeline
+
 
 # Triggers for the workflow
 on:
+  push:
+   branches:
+      - main
   pull_request:
    branches:
       - main
